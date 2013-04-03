@@ -7,13 +7,13 @@ package geometry2D;
  */
 public class DistancePoints {
 
-    public static double squareDistance(Point2D a, Point2D b){
+    public static double squareDistance(Point a, Point b){
         float dx = a.getX() - b.getX();
         float dy = a.getY() - b.getY();
         return dx * dx + dy * dy;
     }
 
-    public static double distance(Point2D a, Point2D b){
+    public static double distance(Point a, Point b){
         return Math.sqrt(squareDistance(a, b));
     }
     //TODO: check arithmetic overflow

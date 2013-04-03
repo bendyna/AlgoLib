@@ -17,7 +17,7 @@ public class Line {
         this.C = C;
     }
 
-    public static Line fromPoints(Point2D a, Point2D b){
+    public static Line fromPoints(Point a, Point b){
         float A = a.getY() - b.getY();
         float B = b.getX() - a.getX();
         float C = a.getX() * b.getY() - a.getY() * b.getX();

@@ -5,12 +5,12 @@ package geometry2D;
  * User: ivan.bendyna
  * Date: 03.04.13
  */
-public class Point2D {
+public class Point {
 
     final private float x;
     final private float y;
 
-    public Point2D(float x, float y){
+    public Point(float x, float y){
         this.x = x;
         this.y = y;
     }
