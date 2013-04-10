@@ -42,8 +42,4 @@ public class Line {
         return Math.abs(A * p.getX() + B * p.getY() + C) < EPS;
     }
 
-
-
-
-    //TODO: check arithmetic overflow
 }

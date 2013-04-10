@@ -16,6 +16,7 @@ public class DistancePoints {
     public static double distance(Point a, Point b){
         return Math.sqrt(squareDistance(a, b));
     }
-    //TODO: check arithmetic overflow
-    //TODO: unit tests
+
+    //TODO: change at tests expected and actual
+    //TODO: create bunch of tests
 }
