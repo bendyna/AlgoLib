@@ -7,37 +7,43 @@ package geometry2D;
  */
 public class Line {
 
-    private float A;
-    private float B;
-    private float C;
+    private final static double EPS = 0.00000000001;
 
-    public Line(float A, float B, float C){
+    private double A;
+    private double B;
+    private double C;
+
+    public Line(double A, double B, double C){
         this.A = A;
         this.B = B;
         this.C = C;
     }
 
     public static Line fromPoints(Point a, Point b){
-        float A = a.getY() - b.getY();
-        float B = b.getX() - a.getX();
-        float C = a.getX() * b.getY() - a.getY() * b.getX();
+        double A = a.getY() - b.getY();
+        double B = b.getX() - a.getX();
+        double C = a.getX() * b.getY() - a.getY() * b.getX();
         return new Line(A, B, C);
     }
 
-    public float getC() {
+    public double getC() {
         return C;
     }
 
-    public float getA() {
+    public double getA() {
         return A;
     }
 
-    public float getB() {
+    public double getB() {
         return B;
     }
 
+    public boolean isPointOnLine(Point p){
+        return Math.abs(A * p.getX() + B * p.getY() + C) < EPS;
+    }
+
+
+
 
     //TODO: check arithmetic overflow
-    //TODO: unit tests
-    //TODO: check whether point is on line
 }

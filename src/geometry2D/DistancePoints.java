@@ -8,8 +8,8 @@ package geometry2D;
 public class DistancePoints {
 
     public static double squareDistance(Point a, Point b){
-        float dx = a.getX() - b.getX();
-        float dy = a.getY() - b.getY();
+        double dx = a.getX() - b.getX();
+        double dy = a.getY() - b.getY();
         return dx * dx + dy * dy;
     }
 
