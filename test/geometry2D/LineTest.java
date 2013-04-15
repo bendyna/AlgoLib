@@ -18,11 +18,11 @@ public class LineTest {
     public void testIsPointOnLine() throws Exception {
         Line line = new Line(2, 1, 5);
 
-        assertEquals(line.isPointOnLine(new Point(-2.5f, 0)), true);
-        assertEquals(line.isPointOnLine(new Point(0, -5)), true);
-        assertEquals(line.isPointOnLine(new Point(16, 0)), false);
-        assertEquals(line.isPointOnLine(new Point(0, 0)), false);
-        assertEquals(line.isPointOnLine(new Point(-3, 1)), true);
+        assertEquals(true, line.isPointOnLine(new Point(-2.5f, 0)));
+        assertEquals(true, line.isPointOnLine(new Point(0, -5)));
+        assertEquals(false, line.isPointOnLine(new Point(16, 0)));
+        assertEquals(false, line.isPointOnLine(new Point(0, 0)));
+        assertEquals(true, line.isPointOnLine(new Point(-3, 1)));
     }
 
     @Test
@@ -35,8 +35,8 @@ public class LineTest {
 
     private void testLineFromPoints(Point a, Point b){
         Line line = Line.fromPoints(a, b);
-        assertEquals(line.isPointOnLine(a), true);
-        assertEquals(line.isPointOnLine(b), true);
+        assertEquals(true, line.isPointOnLine(a));
+        assertEquals(true, line.isPointOnLine(b));
     }
 
     @Test

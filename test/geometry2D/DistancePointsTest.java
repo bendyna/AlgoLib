@@ -17,22 +17,22 @@ public class DistancePointsTest {
         Point a = new Point(4, 3);
         Point b = new Point(0, 0);
 
-        assertEquals(DistancePoints.squareDistance(a, b), 25, EPS);
+        assertEquals(25, DistancePoints.squareDistance(a, b), EPS);
 
         a = new Point(4, 3);
         b = new Point(4, 3);
 
-        assertEquals(DistancePoints.squareDistance(a, b), 0, EPS);
+        assertEquals(0, DistancePoints.squareDistance(a, b), EPS);
 
         a = new Point(4, 4);
         b = new Point(4, 3);
 
-        assertEquals(DistancePoints.squareDistance(a, b), 1, EPS);
+        assertEquals(1, DistancePoints.squareDistance(a, b), EPS);
 
         a = new Point(4, 2);
         b = new Point(2, 4);
 
-        assertEquals(DistancePoints.squareDistance(a, b), 8, EPS);
+        assertEquals(8, DistancePoints.squareDistance(a, b), EPS);
     }
 
     @Test
@@ -40,6 +40,6 @@ public class DistancePointsTest {
         Point a = new Point(4, 3);
         Point b = new Point(0, 0);
 
-        assertEquals(DistancePoints.distance(a, b), 5, 0.0);
+        assertEquals(5, DistancePoints.distance(a, b), 0.0);
     }
 }
