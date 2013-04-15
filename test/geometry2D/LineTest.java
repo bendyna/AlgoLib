@@ -47,7 +47,6 @@ public class LineTest {
             Point a = new Point(rand.nextDouble() * 100 - 50, rand.nextDouble() * 100 - 50);
             Point b = new Point(rand.nextDouble() * 100 - 50, rand.nextDouble() * 100 - 50);
 
-            System.out.println(a.getX() + ", " + a.getY() + "; " + b.getX() + ", " + b.getY());
             testLineFromPoints(a, b);
         }
     }

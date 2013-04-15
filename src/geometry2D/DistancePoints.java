@@ -17,5 +17,4 @@ public class DistancePoints {
         return Math.sqrt(squareDistance(a, b));
     }
 
-    //TODO: create bunch of tests
 }
