@@ -7,7 +7,7 @@ package geometry2D;
  */
 public class Line {
 
-    private final static double EPS = 0.00000000001;
+    private final static double EPS = 0.000000001;
 
     private double A;
     private double B;
