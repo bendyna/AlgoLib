@@ -68,7 +68,7 @@ public class LineTest {
         Line line = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
         Line line1 = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
 
-        assertEquals(0, line.intersect(line1).size());
+        assertEquals(1, line.intersect(line1).size());
 
         Line line2 = Line.fromPoints(new Point(3, 6), new Point(-12, 3));
 
@@ -77,8 +77,13 @@ public class LineTest {
         Line line3 = Line.fromPoints(new Point(-6, 5), new Point(-4, 3));
 
         assertEquals(1, line.intersect(line3).size());
-        assertEquals(-5.0, line.intersect(line3).get(0).getX(), EPS);
-        assertEquals(4.0, line.intersect(line3).get(0).getY(), EPS);
+
+        GeometricObject intersection = line.intersect(line3).get(0);
+        assertEquals(true, intersection instanceof Point);
+
+        Point p = (Point) intersection;
+        assertEquals(-5.0, p.getX(), EPS);
+        assertEquals(4.0, p.getY(), EPS);
     }
 
     @Test

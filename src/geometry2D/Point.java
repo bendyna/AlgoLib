@@ -49,8 +49,8 @@ public class Point extends GeometricObject {
     }
 
     @Override
-    public List<Point> intersect(GeometricObject otherObject) {
-        return new ArrayList<Point>();
+    public List<GeometricObject> intersect(GeometricObject otherObject) {
+        return new ArrayList<GeometricObject>();
     }
 
     @Override

@@ -1,14 +1,17 @@
+
 package geometry2D;
 
 /**
- * Created with IntelliJ IDEA.
- * User: ivan.bendyna
- * Date: 15.04.13
+ * Created with IntelliJ IDEA. User: ivan.bendyna Date: 15.04.13
  */
 
 public class LinesIntersection {
 
-    public static Point findIntersection(Line line1, Line line2) {
+    public static GeometricObject findIntersection(Line line1, Line line2) {
+
+        if (line1.equals(line2)) {
+            return line1;
+        }
 
         if (line1.isParallel(line2)) {
             return null;

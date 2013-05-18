@@ -44,7 +44,7 @@ public class Segment extends GeometricObject {
     }
 
     @Override
-    public List<Point> intersect(GeometricObject otherObject) {
+    public List<GeometricObject> intersect(GeometricObject otherObject) {
         return null;
     }
 

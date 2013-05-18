@@ -15,6 +15,17 @@ public class LinesIntersectionTest {
     private final static int RANDOM_COUNT = 10000;
 
     @Test
+    public void testFindIntersectionEqual() throws Exception {
+        Line line1 = new Line(5, -1, 10);
+        Line line2 = new Line(-10, 2, -20);
+
+        GeometricObject intersection = LinesIntersection.findIntersection(
+                        line1, line2);
+        assertEquals(true, intersection instanceof Line);
+        assertEquals(true, line1.equals(intersection));
+    }
+
+    @Test
     public void testFindIntersectionParallel() throws Exception {
         Line line1 = new Line(5, -1, 10);
         Line line2 = new Line(15, -3, 3);
@@ -34,7 +45,10 @@ public class LinesIntersectionTest {
                             rand.nextDouble() * 200 - 100,
                             rand.nextDouble() * 200 - 100);
 
-            Point p = LinesIntersection.findIntersection(line1, line2);
+            GeometricObject intersection = LinesIntersection.findIntersection(
+                            line1, line2);
+            assertEquals(true, intersection instanceof Point);
+            Point p = (Point) intersection;
 
             assertEquals(true, line1.isPointOnLine(p));
             assertEquals(true, line2.isPointOnLine(p));

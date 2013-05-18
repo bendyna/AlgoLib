@@ -51,6 +51,10 @@ public class PointTest {
         assertEquals(false, p1.equals(p3));
         assertEquals(false, p2.equals(p3));
         assertEquals(false, p2.equals(new Object()));
+
+        p4.rotate(134);
+        p4.rotate(226);
+        assertEquals(true, p2.equals(p4));
     }
 
     @Test
