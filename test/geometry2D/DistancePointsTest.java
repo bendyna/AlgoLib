@@ -1,13 +1,13 @@
+
 package geometry2D;
 
+import static geometry2D.GeometricObject.EPS;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static junit.framework.Assert.*;
-import static geometry2D.GeometricObject.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: ivan.bendyna
- * Date: 10.04.13
+ * Created with IntelliJ IDEA. User: ivan.bendyna Date: 10.04.13
  */
 public class DistancePointsTest {
 

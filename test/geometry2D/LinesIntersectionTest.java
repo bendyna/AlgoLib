@@ -1,14 +1,14 @@
+
 package geometry2D;
 
-import static junit.framework.Assert.*;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 
+import org.junit.Test;
+
 /**
- * Created with IntelliJ IDEA.
- * User: ivan.bendyna
- * Date: 15.04.13
+ * Created with IntelliJ IDEA. User: ivan.bendyna Date: 15.04.13
  */
 public class LinesIntersectionTest {
 
@@ -26,9 +26,13 @@ public class LinesIntersectionTest {
     public void testFindIntersectionRandom() throws Exception {
         Random rand = new Random();
 
-        for(int i = 0; i < RANDOM_COUNT; i++){
-            Line line1 = new Line(rand.nextDouble() * 200 - 100, rand.nextDouble() * 200 - 100, rand.nextDouble() * 200 - 100);
-            Line line2 = new Line(rand.nextDouble() * 200 - 100, rand.nextDouble() * 200 - 100, rand.nextDouble() * 200 - 100);
+        for (int i = 0; i < RANDOM_COUNT; i++) {
+            Line line1 = new Line(rand.nextDouble() * 200 - 100,
+                            rand.nextDouble() * 200 - 100,
+                            rand.nextDouble() * 200 - 100);
+            Line line2 = new Line(rand.nextDouble() * 200 - 100,
+                            rand.nextDouble() * 200 - 100,
+                            rand.nextDouble() * 200 - 100);
 
             Point p = LinesIntersection.findIntersection(line1, line2);
 

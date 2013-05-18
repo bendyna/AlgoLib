@@ -1,11 +1,13 @@
+
 package geometry2D;/*
  * Date: 18.05.13 14:29
  * Author: ivan.bendyna
  */
 
+import static geometry2D.GeometricObject.EPS;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static junit.framework.Assert.*;
-import static geometry2D.GeometricObject.*;
 
 public class PointTest {
 
@@ -19,7 +21,7 @@ public class PointTest {
     }
 
     @Test
-    public void testRotate(){
+    public void testRotate() {
         Point p = new Point(5, 3);
         p.rotate(180);
 
@@ -38,7 +40,7 @@ public class PointTest {
     }
 
     @Test
-    public void testEquality(){
+    public void testEquality() {
         Point p1 = new Point(3, 4);
         Point p2 = new Point(4, 3);
         Point p3 = new Point(4, 4);

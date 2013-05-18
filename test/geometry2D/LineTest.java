@@ -1,15 +1,15 @@
+
 package geometry2D;
 
-import static junit.framework.Assert.*;
-import static geometry2D.GeometricObject.*;
-import org.junit.Test;
+import static geometry2D.GeometricObject.EPS;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 
+import org.junit.Test;
+
 /**
- * Created with IntelliJ IDEA.
- * User: ivan.bendyna
- * Date: 10.04.13
+ * Created with IntelliJ IDEA. User: ivan.bendyna Date: 10.04.13
  */
 public class LineTest {
 
@@ -34,7 +34,7 @@ public class LineTest {
         testLineFromPoints(a, b);
     }
 
-    private void testLineFromPoints(Point a, Point b){
+    private void testLineFromPoints(Point a, Point b) {
         Line line = Line.fromPoints(a, b);
         assertEquals(true, line.isPointOnLine(a));
         assertEquals(true, line.isPointOnLine(b));
@@ -44,9 +44,11 @@ public class LineTest {
     public void testFromPointsRandom() throws Exception {
         Random rand = new Random();
 
-        for(int i = 0; i < RANDOM_COUNT; i++){
-            Point a = new Point(rand.nextDouble() * 100 - 50, rand.nextDouble() * 100 - 50);
-            Point b = new Point(rand.nextDouble() * 100 - 50, rand.nextDouble() * 100 - 50);
+        for (int i = 0; i < RANDOM_COUNT; i++) {
+            Point a = new Point(rand.nextDouble() * 100 - 50,
+                            rand.nextDouble() * 100 - 50);
+            Point b = new Point(rand.nextDouble() * 100 - 50,
+                            rand.nextDouble() * 100 - 50);
 
             testLineFromPoints(a, b);
         }
@@ -80,20 +82,20 @@ public class LineTest {
     }
 
     @Test
-    public void testRotate(){
+    public void testRotate() {
         Line line = Line.fromPoints(new Point(1, 4), new Point(5, 6));
         line.rotate(90);
 
         assertEquals(true, line.isPointOnLine(new Point(-5, 3)));
 
-        line.rotate(new Point(-5, 3) ,-90);
+        line.rotate(new Point(-5, 3), -90);
 
         assertEquals(true, line.isPointOnLine(new Point(-3, 4)));
         assertEquals(false, line.isPointOnLine(new Point(-3, 3)));
     }
 
     @Test
-    public void testEquality(){
+    public void testEquality() {
         Line line1 = new Line(5, 10, 25);
         Line line2 = new Line(-1, -2, -5);
         Line line3 = new Line(0, -2, -5);
