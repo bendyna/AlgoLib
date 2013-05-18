@@ -1,11 +1,14 @@
 package geometry2D;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ivan.bendyna
  * Date: 03.04.13
  */
-public class Point {
+public class Point extends GeometricObject{
 
     private double x;
     private double y;
@@ -23,11 +26,13 @@ public class Point {
         return y;
     }
 
+    @Override
     public void shift(double dx, double dy){
         x += dx;
         y += dy;
     }
 
+    @Override
     public void rotate(double angleDegreeCcw){
         double length = Math.sqrt(y * y + x * x);
         double currentAngle = Math.atan2(y, x) * 180.0 / Math.PI;
@@ -37,10 +42,16 @@ public class Point {
         y = length * Math.sin(currentAngle);
     }
 
+    @Override
     public void rotate(Point pivot, double angleDegreeCcw){
         shift(-pivot.getX(), -pivot.getY());
         rotate(angleDegreeCcw);
         shift(pivot.getX(), pivot.getY());
+    }
+
+    @Override
+    public List<Point> intersect(GeometricObject otherObject) {
+        return new ArrayList<Point>();
     }
 
 }
