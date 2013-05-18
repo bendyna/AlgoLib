@@ -6,15 +6,15 @@ package geometry2D;
  * Date: 15.04.13
  */
 
-import static geometry2D.GeometricObject.*;
-
 public class LinesIntersection {
 
     public static Point findIntersection(Line line1, Line line2) {
-        double D = line1.getA() * line2.getB() - line1.getB() * line2.getA();
-        if (Math.abs(D) < EPS) {
+
+        if (line1.isParallel(line2)) {
             return null;
         }
+
+        double D = line1.getA() * line2.getB() - line1.getB() * line2.getA();
 
         double x = line1.getB() * line2.getC() - line1.getC() * line2.getB();
         x = x / D;

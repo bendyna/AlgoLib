@@ -118,4 +118,8 @@ public class Line extends GeometricObject{
         }
         return result;
     }
+
+    public boolean isParallel(Line otherLine){
+        return Math.abs(A * otherLine.getB() - B * otherLine.getA()) < EPS;
+    }
 }
