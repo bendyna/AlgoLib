@@ -13,6 +13,7 @@ import java.util.Random;
 public class LineTest {
 
     private final static int RANDOM_COUNT = 10000;
+    private final static double EPS = 0.00000001;
 
     @Test
     public void testIsPointOnLine() throws Exception {
@@ -74,8 +75,8 @@ public class LineTest {
         Line line3 = Line.fromPoints(new Point(-6, 5), new Point(-4, 3));
 
         assertEquals(1, line.intersect(line3).size());
-        assertEquals(-5.0, line.intersect(line3).get(0).getX());
-        assertEquals(4.0, line.intersect(line3).get(0).getY());
+        assertEquals(-5.0, line.intersect(line3).get(0).getX(), EPS);
+        assertEquals(4.0, line.intersect(line3).get(0).getY(), EPS);
     }
 
     @Test
@@ -89,5 +90,21 @@ public class LineTest {
 
         assertEquals(true, line.isPointOnLine(new Point(-3, 4)));
         assertEquals(false, line.isPointOnLine(new Point(-3, 3)));
+    }
+
+    @Test
+    public void testEquality(){
+        Line line1 = new Line(5, 10, 25);
+        Line line2 = new Line(-1, -2, -5);
+        Line line3 = new Line(0, -2, -5);
+
+        assertEquals(true, line1.equals(line2));
+        assertEquals(false, line1.equals(line3));
+
+        Line line4 = Line.fromPoints(new Point(2, 4), new Point(3, 6));
+        Line line5 = Line.fromPoints(new Point(3, 1), new Point(5, 0));
+        line5.rotate(new Point(1, 2), 90);
+
+        assertEquals(true, line4.equals(line5));
     }
 }

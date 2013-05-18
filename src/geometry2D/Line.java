@@ -23,6 +23,30 @@ public class Line extends GeometricObject{
         this.A = A;
         this.B = B;
         this.C = C;
+        normalize();
+    }
+
+    private void normalize(){
+        double p = Math.sqrt(A * A + B * B);
+        A /= p;
+        B /= p;
+        C /= p;
+        if(A < 0){
+            A = -A;
+            B = -B;
+            C = -C;
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Line){
+            Line line  = (Line) obj;
+            return (Math.abs(A - line.getA()) < EPS) && (Math.abs(B - line.getB()) < EPS) && (Math.abs(C - line.getC()) < EPS);
+        }
+        else{
+            return false;
+        }
     }
 
     public static Line fromPoints(Point a, Point b){
