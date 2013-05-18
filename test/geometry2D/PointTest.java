@@ -37,4 +37,18 @@ public class PointTest {
         assertEquals(1.0, p.getX(), EPS);
         assertEquals(3.0, p.getY(), EPS);
     }
+
+    @Test
+    public void testEquality(){
+        Point p1 = new Point(3, 4);
+        Point p2 = new Point(4, 3);
+        Point p3 = new Point(4, 4);
+        Point p4 = new Point(4, 3);
+
+        assertEquals(true, p2.equals(p4));
+        assertEquals(false, p1.equals(p4));
+        assertEquals(false, p1.equals(p3));
+        assertEquals(false, p2.equals(p3));
+        assertEquals(false, p2.equals(new Object()));
+    }
 }

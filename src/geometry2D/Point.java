@@ -54,4 +54,14 @@ public class Point extends GeometricObject{
         return new ArrayList<Point>();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Point){
+            Point otherPoint = (Point) obj;
+            return (x == otherPoint.x) && (y == otherPoint.y);
+        }
+        else{
+            return false;
+        }
+    }
 }
