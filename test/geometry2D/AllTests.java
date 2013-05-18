@@ -14,7 +14,8 @@ import org.junit.runners.Suite;
         DistancePointsTest.class,
         LineTest.class,
         LinesIntersectionTest.class,
-        PointTest.class
+        PointTest.class,
+        SegmentTest.class
 })
 
 public class AllTests {}

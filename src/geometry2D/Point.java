@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class Point extends GeometricObject{
 
+    private final static double EPS = 0.00000001;
+
     private double x;
     private double y;
 
@@ -58,7 +60,7 @@ public class Point extends GeometricObject{
     public boolean equals(Object obj) {
         if(obj instanceof Point){
             Point otherPoint = (Point) obj;
-            return (x == otherPoint.x) && (y == otherPoint.y);
+            return (Math.abs(x - otherPoint.x) < EPS) && (Math.abs(y - otherPoint.y) < EPS);
         }
         else{
             return false;
