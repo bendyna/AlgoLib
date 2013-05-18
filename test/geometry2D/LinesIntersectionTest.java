@@ -1,8 +1,6 @@
 package geometry2D;
 
 import static junit.framework.Assert.*;
-
-import com.sun.corba.se.impl.oa.poa.POAPolicyMediatorImpl_NR_UDS;
 import org.junit.Test;
 
 import java.util.Random;

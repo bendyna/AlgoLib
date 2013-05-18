@@ -46,4 +46,8 @@ public class Segment extends GeometricObject {
     public List<Point> intersect(GeometricObject otherObject) {
         return null;
     }
+
+    public Line expandToLine(){
+        return Line.fromPoints(a, b);
+    }
 }

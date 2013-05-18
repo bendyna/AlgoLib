@@ -110,4 +110,12 @@ public class Line extends GeometricObject{
 
         return result;
     }
+
+    public double pointShift(Point a){
+        double result = A * a.getX() + B * a.getY() + C;
+        if(Math.abs(result) < EPS){
+            result = 0;
+        }
+        return result;
+    }
 }
