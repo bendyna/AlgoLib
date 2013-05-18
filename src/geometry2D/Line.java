@@ -20,6 +20,9 @@ public class Line {
     }
 
     public static Line fromPoints(Point a, Point b){
+        if(a.equals(b)){
+            throw new IllegalArgumentException("Can't define line. Points are equal.");
+        }
         double A = a.getY() - b.getY();
         double B = b.getX() - a.getX();
         double C = a.getX() * b.getY() - a.getY() * b.getX();
