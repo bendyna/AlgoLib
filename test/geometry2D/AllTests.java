@@ -13,7 +13,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         DistancePointsTest.class,
         LineTest.class,
-        LinesIntersectionTest.class
+        LinesIntersectionTest.class,
+        PointTest.class
 })
 
 public class AllTests {}

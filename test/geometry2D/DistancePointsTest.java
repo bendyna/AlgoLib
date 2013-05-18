@@ -10,7 +10,7 @@ import static junit.framework.Assert.*;
  */
 public class DistancePointsTest {
 
-    private final static double EPS = 0.000000001;
+    private final static double EPS = 0.00000001;
 
     @Test
     public void testSquareDistance() throws Exception {
