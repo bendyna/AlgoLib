@@ -50,4 +50,44 @@ public class LineTest {
             testLineFromPoints(a, b);
         }
     }
+
+    @Test
+    public void testShift() {
+        Line line = Line.fromPoints(new Point(4, 6), new Point(-10, 3));
+        line.shift(-3, 2);
+
+        assertEquals(true, line.isPointOnLine(new Point(1, 8)));
+        assertEquals(true, line.isPointOnLine(new Point(-13, 5)));
+    }
+
+    @Test
+    public void testIntersection() {
+        Line line = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
+        Line line1 = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
+
+        assertEquals(0, line.intersect(line1).size());
+
+        Line line2 = Line.fromPoints(new Point(3, 6), new Point(-12, 3));
+
+        assertEquals(0, line.intersect(line2).size());
+
+        Line line3 = Line.fromPoints(new Point(-6, 5), new Point(-4, 3));
+
+        assertEquals(1, line.intersect(line3).size());
+        assertEquals(-5.0, line.intersect(line3).get(0).getX());
+        assertEquals(4.0, line.intersect(line3).get(0).getY());
+    }
+
+    @Test
+    public void testRotate(){
+        Line line = Line.fromPoints(new Point(1, 4), new Point(5, 6));
+        line.rotate(90);
+
+        assertEquals(true, line.isPointOnLine(new Point(-5, 3)));
+
+        line.rotate(new Point(-5, 3) ,-90);
+
+        assertEquals(true, line.isPointOnLine(new Point(-3, 4)));
+        assertEquals(false, line.isPointOnLine(new Point(-3, 3)));
+    }
 }
