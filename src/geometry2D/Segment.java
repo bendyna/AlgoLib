@@ -5,7 +5,6 @@ package geometry2D;/*
 
 import java.util.List;
 
-//TODO: EPS in GeometricObject
 public class Segment extends GeometricObject {
 
     private Point a;

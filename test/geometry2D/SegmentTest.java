@@ -4,11 +4,10 @@ package geometry2D;/*
  */
 
 import static junit.framework.Assert.*;
+import static geometry2D.GeometricObject.*;
 import org.junit.Test;
 
 public class SegmentTest {
-
-    private final static double EPS = 0.00000001;
 
     @Test
     public void testLength(){

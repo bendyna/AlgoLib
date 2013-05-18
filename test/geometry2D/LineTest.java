@@ -1,6 +1,7 @@
 package geometry2D;
 
 import static junit.framework.Assert.*;
+import static geometry2D.GeometricObject.*;
 import org.junit.Test;
 
 import java.util.Random;
@@ -13,7 +14,6 @@ import java.util.Random;
 public class LineTest {
 
     private final static int RANDOM_COUNT = 10000;
-    private final static double EPS = 0.00000001;
 
     @Test
     public void testIsPointOnLine() throws Exception {

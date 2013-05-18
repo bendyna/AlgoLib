@@ -2,6 +2,7 @@ package geometry2D;
 
 import org.junit.Test;
 import static junit.framework.Assert.*;
+import static geometry2D.GeometricObject.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,8 +10,6 @@ import static junit.framework.Assert.*;
  * Date: 10.04.13
  */
 public class DistancePointsTest {
-
-    private final static double EPS = 0.00000001;
 
     @Test
     public void testSquareDistance() throws Exception {

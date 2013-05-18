@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Point extends GeometricObject{
 
-    private final static double EPS = 0.00000001;
-
     private double x;
     private double y;
 

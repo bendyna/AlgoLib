@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Line extends GeometricObject{
 
-    private final static double EPS = 0.00000001;
-
     private double A;
     private double B;
     private double C;

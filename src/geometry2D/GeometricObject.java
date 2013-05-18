@@ -6,6 +6,9 @@ package geometry2D;/*
 import java.util.List;
 
 public abstract class GeometricObject {
+
+    public final static double EPS = 0.00000001;
+
     public abstract void shift(double dx, double dy);
     public abstract void rotate(double angleDegreeCcw);
     public void rotate(Point pivot, double angleDegreeCcw){

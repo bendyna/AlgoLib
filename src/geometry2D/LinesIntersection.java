@@ -5,9 +5,10 @@ package geometry2D;
  * User: ivan.bendyna
  * Date: 15.04.13
  */
-public class LinesIntersection {
 
-    private final static double EPS = 0.00000001;
+import static geometry2D.GeometricObject.*;
+
+public class LinesIntersection {
 
     public static Point findIntersection(Line line1, Line line2) {
         double D = line1.getA() * line2.getB() - line1.getB() * line2.getA();

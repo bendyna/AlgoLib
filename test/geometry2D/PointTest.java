@@ -5,10 +5,9 @@ package geometry2D;/*
 
 import org.junit.Test;
 import static junit.framework.Assert.*;
+import static geometry2D.GeometricObject.*;
 
 public class PointTest {
-
-    private final static double EPS = 0.00000001;
 
     @Test
     public void testShift() {
