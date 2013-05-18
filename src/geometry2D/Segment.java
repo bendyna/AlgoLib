@@ -1,3 +1,4 @@
+
 package geometry2D;/*
  * Date: 18.05.13 16:12
  * Author: ivan.bendyna
@@ -10,24 +11,24 @@ public class Segment extends GeometricObject {
     private Point a;
     private Point b;
 
-    public Segment(Point a, Point b){
-        if(a.equals(b)){
+    public Segment(Point a, Point b) {
+        if (a.equals(b)) {
             throw new IllegalArgumentException("Points are equal.");
         }
         this.a = a;
         this.b = b;
     }
 
-    public Point getA(){
+    public Point getA() {
         return a;
     }
 
-    public Point getB(){
+    public Point getB() {
         return b;
     }
 
-    public double length(){
-        return DistancePoints.distance(a, b);
+    public double length() {
+        return a.distance(b);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class Segment extends GeometricObject {
         return null;
     }
 
-    public Line expandToLine(){
+    public Line expandToLine() {
         return Line.fromPoints(a, b);
     }
 }

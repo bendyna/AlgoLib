@@ -52,4 +52,13 @@ public class PointTest {
         assertEquals(false, p2.equals(p3));
         assertEquals(false, p2.equals(new Object()));
     }
+
+    @Test
+    public void testDistance() {
+        Point p1 = new Point(10, 7);
+        Point p2 = new Point(6, 4);
+
+        assertEquals(25.0, p1.squareDistance(p2), EPS);
+        assertEquals(5.0, p1.distance(p2), EPS);
+    }
 }
