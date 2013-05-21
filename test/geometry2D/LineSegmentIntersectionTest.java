@@ -11,7 +11,18 @@ import org.junit.Test;
 public class LineSegmentIntersectionTest {
 
     @Test
-    public void testIntersection() {
+    public void testIntersectionSegment() {
+        Line line = Line.fromPoints(new Point(-4, -4), new Point(2, 2));
+        Segment segment = new Segment(new Point(3, 3), new Point(4, 4));
+
+        GeometricObject intersection = LineSegmentIntersection
+                        .findIntersection(line, segment);
+        assertEquals(true, intersection instanceof Segment);
+        assertEquals(true, segment.equals(intersection));
+    }
+
+    @Test
+    public void testIntersectionPoint() {
         Line line = Line.fromPoints(new Point(-4, 4), new Point(2, 2));
         Segment segment1 = new Segment(new Point(-4, 2), new Point(-2, 1));
         Segment segment2 = new Segment(new Point(-3, 3), new Point(0, 0));
