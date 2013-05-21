@@ -38,4 +38,33 @@ public class SegmentTest {
         assertEquals(2.0, segment.getB().getY(), EPS);
     }
 
+    @Test
+    public void testIsPointOnSegment() {
+        Segment segment = new Segment(new Point(-2, 2), new Point(2, 3));
+
+        assertEquals(true, segment.isPointOnSegment(new Point(0, 2.5)));
+        assertEquals(true, segment.isPointOnSegment(new Point(-2, 2)));
+        assertEquals(true, segment.isPointOnSegment(new Point(2, 3)));
+        assertEquals(false, segment.isPointOnSegment(new Point(-1, 4)));
+        assertEquals(false, segment.isPointOnSegment(new Point(6, 4)));
+    }
+
+    @Test
+    public void testEquality() {
+        Segment segment1 = new Segment(new Point(4, 5), new Point(6, 7));
+        Segment segment2 = new Segment(new Point(6, 7), new Point(4, 5));
+
+        assertEquals(segment1, segment2);
+    }
+
+    @Test
+    public void testSegemntsRectIntersection() {
+        Segment segment1 = new Segment(new Point(0, 3), new Point(3, 0));
+        Segment segment2 = new Segment(new Point(2, 2), new Point(5, 5));
+        Segment segment3 = new Segment(new Point(4, 3), new Point(7, 6));
+
+        assertEquals(true, segment1.isSegmentsRectsIntersect(segment2));
+        assertEquals(false, segment1.isSegmentsRectsIntersect(segment3));
+        assertEquals(true, segment3.isSegmentsRectsIntersect(segment2));
+    }
 }

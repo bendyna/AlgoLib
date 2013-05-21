@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA. User: ivan.bendyna Date: 03.04.13
  */
-public class Point extends GeometricObject {
+public class Point extends GeometricObject implements Comparable<Point> {
 
     private double x;
     private double y;
@@ -15,6 +15,11 @@ public class Point extends GeometricObject {
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point(Point p) {
+        x = p.x;
+        y = p.y;
     }
 
     public double getX() {
@@ -73,4 +78,20 @@ public class Point extends GeometricObject {
     public double distance(Point otherPoint) {
         return Math.sqrt(squareDistance(otherPoint));
     }
+
+    @Override
+    public int compareTo(Point otherPoint) {
+        if (x < otherPoint.x - EPS
+                        || (Math.abs(x - otherPoint.x) < EPS && y < otherPoint.y
+                                        - EPS)) {
+            return -1;
+        }
+        else if (this.equals(otherPoint)) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+
 }

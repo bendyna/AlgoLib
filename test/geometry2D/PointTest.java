@@ -65,4 +65,15 @@ public class PointTest {
         assertEquals(25.0, p1.squareDistance(p2), EPS);
         assertEquals(5.0, p1.distance(p2), EPS);
     }
+
+    @Test
+    public void testLessThan() {
+        Point p1 = new Point(5, 5);
+        Point p2 = new Point(6, 5);
+        Point p3 = new Point(5, 6);
+
+        assertEquals(true, p1.compareTo(p2) < 0);
+        assertEquals(true, p2.compareTo(p3) > 0);
+        assertEquals(true, p1.compareTo(p3) < 0);
+    }
 }
