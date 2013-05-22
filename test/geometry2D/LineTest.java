@@ -114,4 +114,11 @@ public class LineTest {
 
         assertEquals(true, line4.equals(line5));
     }
+
+    @Test
+    public void testDistanceToPoint() {
+        Line line1 = Line.fromPoints(new Point(-1, -1), new Point(1, 2));
+        assertEquals(Math.sqrt(13), line1.distanceToPoint(new Point(-2, 4)), EPS);
+        assertEquals(0, line1.distanceToPoint(new Point(3, 5)), EPS);
+    }
 }

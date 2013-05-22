@@ -24,6 +24,10 @@ public class Line extends GeometricObject {
         normalize();
     }
 
+    public Line(Line line) {
+        this(line.A, line.B, line.C);
+    }
+
     private void normalize() {
         double p = Math.sqrt(A * A + B * B);
         A /= p;
@@ -121,6 +125,10 @@ public class Line extends GeometricObject {
             result = 0;
         }
         return result;
+    }
+
+    public double distanceToPoint(Point a) {
+        return Math.abs(pointShift(a));
     }
 
     public boolean isParallel(Line otherLine) {
