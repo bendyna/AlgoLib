@@ -55,7 +55,16 @@ public class Point extends GeometricObject implements Comparable<Point> {
 
     @Override
     public List<GeometricObject> intersect(GeometricObject otherObject) {
-        return new ArrayList<GeometricObject>();
+        List<GeometricObject> result =  new ArrayList<GeometricObject>();
+        if(otherObject instanceof Point){
+            if(this.equals(otherObject)){
+                result.add(new Point(this));
+            }
+        }
+        else{
+            return otherObject.intersect(this);
+        }
+        return result;
     }
 
     @Override

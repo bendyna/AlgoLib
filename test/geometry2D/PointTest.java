@@ -76,4 +76,16 @@ public class PointTest {
         assertEquals(true, p2.compareTo(p3) > 0);
         assertEquals(true, p1.compareTo(p3) < 0);
     }
+
+    @Test
+    public void testIntersect() {
+        Point p1 = new Point(5, 5);
+        Point p2 = new Point(6, 5);
+        Point p3 = new Point(5, 5);
+
+        assertEquals(0, p1.intersect(p2).size());
+        assertEquals(1, p1.intersect(p3).size());
+        assertEquals(true, p1.intersect(p3).get(0) instanceof Point);
+        assertEquals(p1, p1.intersect(p3).get(0));
+    }
 }
