@@ -115,6 +115,21 @@ public class Line extends GeometricObject {
                 result.add(intersection);
             }
         }
+        else if (otherObject instanceof Segment) {
+            GeometricObject intersection = LineSegmentIntersection.findIntersection(
+                    this, (Segment) otherObject);
+            if (intersection != null) {
+                result.add(intersection);
+            }
+        }
+        else if (otherObject instanceof Point){
+            if(isPointOnLine((Point) otherObject)){
+                result.add(otherObject);
+            }
+        }
+        else{
+            return otherObject.intersect(this);
+        }
 
         return result;
     }

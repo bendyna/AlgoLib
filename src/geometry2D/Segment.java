@@ -18,11 +18,6 @@ public class Segment extends GeometricObject {
         }
         this.a = new Point(a);
         this.b = new Point(b);
-        if (a.compareTo(b) > 0) {
-            Point t = this.a;
-            this.a = this.b;
-            this.b = t;
-        }
     }
 
     // TODO: getAX, getAY, getBX, getBY

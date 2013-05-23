@@ -64,7 +64,7 @@ public class LineTest {
     }
 
     @Test
-    public void testIntersection() {
+    public void testIntersectionLines() {
         Line line = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
         Line line1 = Line.fromPoints(new Point(5, 6), new Point(-10, 3));
 
@@ -81,9 +81,7 @@ public class LineTest {
         GeometricObject intersection = line.intersect(line3).get(0);
         assertEquals(true, intersection instanceof Point);
 
-        Point p = (Point) intersection;
-        assertEquals(-5.0, p.getX(), EPS);
-        assertEquals(4.0, p.getY(), EPS);
+        assertEquals(new Point(-5.0, 4.0), intersection);
     }
 
     @Test
