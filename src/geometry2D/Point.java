@@ -55,13 +55,13 @@ public class Point extends GeometricObject implements Comparable<Point> {
 
     @Override
     public List<GeometricObject> intersect(GeometricObject otherObject) {
-        List<GeometricObject> result =  new ArrayList<GeometricObject>();
-        if(otherObject instanceof Point){
-            if(this.equals(otherObject)){
+        List<GeometricObject> result = new ArrayList<GeometricObject>();
+        if (otherObject instanceof Point) {
+            if (this.equals(otherObject)) {
                 result.add(new Point(this));
             }
         }
-        else{
+        else {
             return otherObject.intersect(this);
         }
         return result;
@@ -101,6 +101,16 @@ public class Point extends GeometricObject implements Comparable<Point> {
         else {
             return 1;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) ((x * 31 + y) * 10000);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 
 }

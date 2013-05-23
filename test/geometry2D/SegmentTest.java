@@ -7,9 +7,9 @@ package geometry2D;/*
 import static geometry2D.GeometricObject.EPS;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import java.util.List;
+
+import org.junit.Test;
 
 public class SegmentTest {
 
@@ -27,8 +27,7 @@ public class SegmentTest {
         Segment segment = new Segment(new Point(4, -4), new Point(2, 0));
         segment.shift(-2, 2);
 
-        assertEquals(2.0, segment.getA().getX(), EPS);
-        assertEquals(2.0, segment.getB().getY(), EPS);
+        assertEquals(new Segment(new Point(2, -2), new Point(0, 2)), segment);
     }
 
     @Test
@@ -36,8 +35,7 @@ public class SegmentTest {
         Segment segment = new Segment(new Point(4, -4), new Point(2, 0));
         segment.rotate(90);
 
-        assertEquals(4.0, segment.getA().getX(), EPS);
-        assertEquals(2.0, segment.getB().getY(), EPS);
+        assertEquals(new Segment(new Point(4, 4), new Point(0, 2)), segment);
     }
 
     @Test
@@ -87,5 +85,12 @@ public class SegmentTest {
         assertEquals(1, intersection.size());
         assertEquals(true, intersection.get(0) instanceof Point);
         assertEquals(point, intersection.get(0));
+
+        Segment segment3 = new Segment(new Point(1, 6), new Point(2, 6));
+        Segment segment4 = new Segment(new Point(5, 6), new Point(1, 6));
+
+        intersection = segment3.intersect(segment4);
+        assertEquals(1, intersection.size());
+        assertEquals(segment3, intersection.get(0));
     }
 }

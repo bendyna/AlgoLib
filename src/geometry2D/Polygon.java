@@ -6,7 +6,10 @@
 
 package geometry2D;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Polygon extends GeometricObject {
 
@@ -59,8 +62,36 @@ public class Polygon extends GeometricObject {
         }
     }
 
+    // TODO: improve intersection with Point
+
     @Override
     public List<GeometricObject> intersect(GeometricObject otherObject) {
-        return null;
+        List<GeometricObject> result = new ArrayList<GeometricObject>();
+        Set<Point> setPoints = new HashSet<Point>();
+        for (int i = 0; i < N; i++) {
+            List<GeometricObject> intersection = segments[i]
+                            .intersect(otherObject);
+            for (GeometricObject go : intersection) {
+                if (go instanceof Point) {
+                    setPoints.add((Point) go);
+                }
+                else {
+                    result.add(go);
+                }
+            }
+        }
+        for (Point p : setPoints) {
+            boolean b = true;
+            for (GeometricObject go : result) {
+                if (!go.intersect(p).isEmpty()) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                result.add(p);
+            }
+        }
+        return result;
     }
 }

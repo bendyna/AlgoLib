@@ -38,6 +38,10 @@ public class Line extends GeometricObject {
             B = -B;
             C = -C;
         }
+        else if (A == 0 && B < 0) {
+            B = -B;
+            C = -C;
+        }
     }
 
     @Override
@@ -116,18 +120,18 @@ public class Line extends GeometricObject {
             }
         }
         else if (otherObject instanceof Segment) {
-            GeometricObject intersection = LineSegmentIntersection.findIntersection(
-                    this, (Segment) otherObject);
+            GeometricObject intersection = LineSegmentIntersection
+                            .findIntersection(this, (Segment) otherObject);
             if (intersection != null) {
                 result.add(intersection);
             }
         }
-        else if (otherObject instanceof Point){
-            if(isPointOnLine((Point) otherObject)){
+        else if (otherObject instanceof Point) {
+            if (isPointOnLine((Point) otherObject)) {
                 result.add(otherObject);
             }
         }
-        else{
+        else {
             return otherObject.intersect(this);
         }
 
