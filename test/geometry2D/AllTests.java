@@ -12,5 +12,5 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ LineTest.class, LinesIntersectionTest.class,
         PointTest.class, SegmentTest.class, LineSegmentIntersectionTest.class,
         SegmentsIntersectionTest.class, LineCircleIntersectionTest.class,
-        PolygonTest.class })
+        PolygonTest.class, CirclesIntersectionTest.class })
 public class AllTests {}

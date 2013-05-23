@@ -3,6 +3,7 @@ package geometry2D;/*
  * Author: ivan.bendyna
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Circle extends GeometricObject{
@@ -28,6 +29,15 @@ public class Circle extends GeometricObject{
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Circle)){
+            return false;
+        }
+        Circle otherCircle = (Circle) obj;
+        return otherCircle.center.equals(center) && Math.abs(radius - otherCircle.radius) < EPS;
+    }
+
+    @Override
     public void shift(double dx, double dy) {
         center.shift(dx, dy);
     }
@@ -39,6 +49,30 @@ public class Circle extends GeometricObject{
 
     @Override
     public List<GeometricObject> intersect(GeometricObject otherObject) {
-        return null;
+        List<GeometricObject> result = new ArrayList<GeometricObject>();
+        if(otherObject instanceof Point){
+            if(Math.abs(center.distance((Point) otherObject) - radius) < EPS){
+                result.add(otherObject);
+            }
+        }
+        else if(otherObject instanceof Line){
+            result.addAll(LineCircleIntersection.findIntersection((Line) otherObject, this));
+        }
+        else if(otherObject instanceof Segment){
+            List<Point> points = LineCircleIntersection.findIntersection(((Segment) otherObject).expandToLine(), this);
+            for(Point p : points){
+                if(((Segment) otherObject).isPointOnSegment(p)){
+                    result.add(p);
+                }
+            }
+        }
+        else if(otherObject instanceof Circle){
+            return CirclesIntersection.findIntersection(this, (Circle) otherObject);
+        }
+        else{
+            return otherObject.intersect(this);
+        }
+
+        return result;
     }
 }
