@@ -4,6 +4,7 @@ package geometry2D;/*
  * Author: ivan.bendyna
  */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Segment extends GeometricObject {
@@ -18,9 +19,9 @@ public class Segment extends GeometricObject {
         this.a = new Point(a);
         this.b = new Point(b);
         if (a.compareTo(b) > 0) {
-            Point t = a;
-            a = b;
-            b = t;
+            Point t = this.a;
+            this.a = this.b;
+            this.b = t;
         }
     }
 
@@ -51,7 +52,22 @@ public class Segment extends GeometricObject {
 
     @Override
     public List<GeometricObject> intersect(GeometricObject otherObject) {
-        return null;
+        List<GeometricObject> result =  new ArrayList<GeometricObject>();
+        if(otherObject instanceof Point){
+            if(isPointOnSegment((Point)otherObject)){
+                result.add(otherObject);
+            }
+        }
+        else if(otherObject instanceof Segment){
+            GeometricObject intersection = SegmentsIntersection.findIntersection(this, (Segment) otherObject);
+            if(intersection != null){
+                result.add(intersection);
+            }
+        }
+        else{
+            return otherObject.intersect(this);
+        }
+        return result;
     }
 
     public Line expandToLine() {

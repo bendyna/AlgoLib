@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import java.util.List;
+
 public class SegmentTest {
 
     @Test
@@ -58,7 +60,7 @@ public class SegmentTest {
     }
 
     @Test
-    public void testSegemntsRectIntersection() {
+    public void testSegmentsRectIntersection() {
         Segment segment1 = new Segment(new Point(0, 3), new Point(3, 0));
         Segment segment2 = new Segment(new Point(2, 2), new Point(5, 5));
         Segment segment3 = new Segment(new Point(4, 3), new Point(7, 6));
@@ -66,5 +68,24 @@ public class SegmentTest {
         assertEquals(true, segment1.isSegmentsRectsIntersect(segment2));
         assertEquals(false, segment1.isSegmentsRectsIntersect(segment3));
         assertEquals(true, segment3.isSegmentsRectsIntersect(segment2));
+    }
+
+    @Test
+    public void testSegmentsIntersection() {
+        Segment segment1 = new Segment(new Point(1, 2), new Point(5, 4));
+        Segment segment2 = new Segment(new Point(4, 2), new Point(2, 4));
+        Point point = new Point(2, 2.5);
+
+        assertEquals(0, point.intersect(segment2).size());
+
+        List<GeometricObject> intersection = segment2.intersect(segment1);
+        assertEquals(1, intersection.size());
+        assertEquals(true, intersection.get(0) instanceof Point);
+        assertEquals(new Point(3, 3), intersection.get(0));
+
+        intersection = segment1.intersect(point);
+        assertEquals(1, intersection.size());
+        assertEquals(true, intersection.get(0) instanceof Point);
+        assertEquals(point, intersection.get(0));
     }
 }
