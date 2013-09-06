@@ -10,6 +10,9 @@ import java.util.Random;
 import static org.junit.Assert.assertTrue;
 
 //TODO: test stability of some sorts
+//TODO: time tests
+//TODO: tests for arrays with the same element
+//TODO: tests for arrays with 2 different element
 public class AllSortsTest {
 
     private final static int COUNT_RANDOM_TESTS = 1000;
@@ -17,7 +20,7 @@ public class AllSortsTest {
 
     @Test
     public void testAll() throws Exception {
-        Sort[] sorts = new Sort[]{new MergeSort()};
+        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort()};
         for(Sort sort : sorts){
             testSort(sort);
         }
