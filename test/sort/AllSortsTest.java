@@ -5,7 +5,6 @@ package sort;/*
 
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
@@ -15,13 +14,6 @@ public class AllSortsTest {
 
     private final static int COUNT_RANDOM_TESTS = 1000;
     private final static int LENGTH_RANDOM_TESTS = 1000;
-
-    @Test
-    public void simpleTest() throws Exception {
-        int[] array = new int[]{8,3,7,6,2,3,9};
-        new MergeSort().sort(array);
-        assertTrue(Arrays.equals(array, new int[]{2,3,3,6,7,8,9}));
-    }
 
     @Test
     public void testAll() throws Exception {
@@ -40,6 +32,7 @@ public class AllSortsTest {
         testRandomByteArrays(sort);
         testRandomFloatArrays(sort);
         testRandomDoubleArrays(sort);
+        testRandomObjectArrays(sort);
     }
 
     private void testEmpty(Sort sort) throws Exception {
@@ -117,6 +110,16 @@ public class AllSortsTest {
         }
     }
 
+    private void testRandomObjectArrays(Sort sort) throws Exception {
+        Random rand = new Random();
+        for(int i = 0; i < COUNT_RANDOM_TESTS; i++){
+            String[] array = generateStringArray(rand);
+            boolean ascending = rand.nextBoolean();
+            sort.sort(array, ascending);
+            assertTrue(checkArray(array, ascending));
+        }
+    }
+
     private long[] generateLongArray(Random rand){
         long[] array = new long[LENGTH_RANDOM_TESTS];
         for(int j = 0; j < array.length; j++){
@@ -169,6 +172,18 @@ public class AllSortsTest {
         float[] array = new float[LENGTH_RANDOM_TESTS];
         for(int j = 0; j < array.length; j++){
             array[j] = rand.nextFloat();
+        }
+        return array;
+    }
+
+    private String[] generateStringArray(Random rand){
+        String[] array = new String[LENGTH_RANDOM_TESTS];
+        for(int j = 0; j < array.length; j++){
+            byte[] chars = new byte[rand.nextInt(10) + 5];
+            for(int i = 0; i < chars.length; i++){
+                chars[i] = (byte) ('A' + rand.nextInt('z' - 'A'));
+            }
+            array[j] = new String(chars);
         }
         return array;
     }
@@ -251,6 +266,18 @@ public class AllSortsTest {
                 continue;
             }
             if((array[i] < array[i + 1]) ^ ascending ){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkArray(String[] array, boolean ascending){
+        for(int i = 0; i < array.length - 1; i++){
+            if(array[i].equals(array[i + 1])) {
+                continue;
+            }
+            if((array[i].compareTo(array[i + 1]) < 0) ^ ascending ){
                 return false;
             }
         }
