@@ -15,12 +15,12 @@ import static org.junit.Assert.assertTrue;
 //TODO: tests for arrays with 2 different element
 public class AllSortsTest {
 
-    private final static int COUNT_RANDOM_TESTS = 1000;
+    private final static int COUNT_RANDOM_TESTS = 10000;
     private final static int LENGTH_RANDOM_TESTS = 1000;
 
     @Test
     public void testAll() throws Exception {
-        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort()};
+        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort(), new HeapSort()};
         for(Sort sort : sorts){
             testSort(sort);
         }
@@ -42,8 +42,15 @@ public class AllSortsTest {
         for(int i = 0; i < COUNT_RANDOM_TESTS; i++){
             long[] array = generateLongArray(rand);
             boolean ascending = rand.nextBoolean();
-            sort.sort(array, ascending);
-            assertTrue(checkArray(array, ascending));
+            int from = rand.nextInt(array.length);
+            int to = rand.nextInt(array.length);
+            if(to < from){
+                int temp = from;
+                from = to;
+                to = temp;
+            }
+            sort.sort(array, ascending, from, to);
+            assertTrue(checkArray(array, ascending, from, to));
         }
     }
 
@@ -77,8 +84,8 @@ public class AllSortsTest {
         return array;
     }
 
-    private boolean checkArray(long[] array, boolean ascending){
-        for(int i = 0; i < array.length - 1; i++){
+    private boolean checkArray(long[] array, boolean ascending ,int from, int to){
+        for(int i = from; i < to; i++){
             if(array[i] == array[i + 1]) {
                 continue;
             }
