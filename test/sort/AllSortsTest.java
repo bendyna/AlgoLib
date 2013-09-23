@@ -15,12 +15,12 @@ import static org.junit.Assert.assertTrue;
 //TODO: tests for arrays with 2 different element
 public class AllSortsTest {
 
-    private final static int COUNT_RANDOM_TESTS = 1000;
-    private final static int LENGTH_RANDOM_TESTS = 1000;
+    private final static int COUNT_RANDOM_TESTS = 10000;
+    private final static int LENGTH_RANDOM_TESTS = 100;
 
     @Test
     public void testAll() throws Exception {
-        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort(), new HeapSort(), new BubbleSort()};
+        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort(), new HeapSort(), new BubbleSort(), new InsertionSort()};
         for(Sort sort : sorts){
             testSort(sort);
         }

@@ -33,10 +33,4 @@ public class BubbleSort extends BaseSort {
             }
         }
     }
-
-    public static void main(String[] args){
-        long[] array = new long[]{6, 5, 4, 3, 2 ,1};
-        new BubbleSort().sort(array, true, 2, 4);
-        System.out.println(Arrays.toString(array));
-    }
 }
