@@ -4,7 +4,11 @@ package sort;/*
  */
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
@@ -13,34 +17,37 @@ import static org.junit.Assert.assertTrue;
 //TODO: time tests
 //TODO: tests for arrays with the same element
 //TODO: tests for arrays with 2 different element
+
+@RunWith(value = Parameterized.class)
 public class AllSortsTest {
 
     private final static int COUNT_RANDOM_TESTS = 10000;
     private final static int LENGTH_RANDOM_TESTS = 100;
+    private final static int LENGTH_TIME_TESTS = 100000;
+
+    private Sort sort;
+
+    public AllSortsTest(Sort sort){
+        this.sort = sort;
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        Object[][] sorts = new Object[][]{{new MergeSort()}, {new QuickSort()}, {new HeapSort()}, {new BubbleSort()}, {new InsertionSort()}};
+        return Arrays.asList(sorts);
+    }
 
     @Test
-    public void testAll() throws Exception {
-        Sort[] sorts = new Sort[]{new MergeSort(), new QuickSort(), new HeapSort(), new BubbleSort(), new InsertionSort()};
-        for(Sort sort : sorts){
-            testSort(sort);
-        }
-    }
-
-    private void testSort(Sort sort) throws Exception {
-        testEmpty(sort);
-        testRandomLongArrays(sort);
-        testRandomObjectArrays(sort);
-    }
-
-    private void testEmpty(Sort sort) throws Exception {
+    public void testEmptyArrays() throws Exception {
         //test for exceptions
         sort.sort(new long[]{});
     }
 
-    private void testRandomLongArrays(Sort sort) throws Exception {
+    @Test
+    public void testRandomLongArrays() throws Exception {
         Random rand = new Random();
         for(int i = 0; i < COUNT_RANDOM_TESTS; i++){
-            long[] array = generateLongArray(rand);
+            long[] array = generateLongArray(rand, LENGTH_RANDOM_TESTS);
             boolean ascending = rand.nextBoolean();
             int from = rand.nextInt(array.length);
             int to = rand.nextInt(array.length);
@@ -54,26 +61,57 @@ public class AllSortsTest {
         }
     }
 
-    private void testRandomObjectArrays(Sort sort) throws Exception {
+    @Test
+    public void testRandomLongObject() throws Exception {
         Random rand = new Random();
         for(int i = 0; i < COUNT_RANDOM_TESTS; i++){
-            String[] array = generateStringArray(rand);
+            String[] array = generateStringArray(rand, LENGTH_RANDOM_TESTS);
             boolean ascending = rand.nextBoolean();
             sort.sort(array, ascending);
             assertTrue(checkArray(array, ascending));
         }
     }
 
-    private long[] generateLongArray(Random rand){
-        long[] array = new long[LENGTH_RANDOM_TESTS];
+    @Test(timeout = 1000)
+    public void testTimeRandomArray() throws Exception {
+        Random rand = new Random();
+        if(sort.isNlgN()){
+            sort.sort(generateLongArray(rand, LENGTH_TIME_TESTS));
+        }
+    }
+
+    @Test(timeout = 1000)
+    public void testTimeSortedArray() throws Exception {
+        if(sort.isNlgN()){
+            sort.sort(createSortedArray());
+        }
+    }
+
+    @Test(timeout = 1000)
+    public void testTimeReverseSortedArray() throws Exception {
+        if(sort.isNlgN()){
+            sort.sort(createSortedArray(), false);
+        }
+    }
+
+    private long[] createSortedArray(){
+        long[] array = new long[LENGTH_TIME_TESTS];
+        for(int i = 0; i < LENGTH_TIME_TESTS; i++){
+            array[i] = i;
+        }
+        return array;
+    }
+
+    private long[] generateLongArray(Random rand, int length){
+        long[] array = new long[length];
         for(int j = 0; j < array.length; j++){
             array[j] = rand.nextLong();
         }
         return array;
     }
 
-    private String[] generateStringArray(Random rand){
-        String[] array = new String[LENGTH_RANDOM_TESTS];
+    private String[] generateStringArray(Random rand, int length){
+        String[] array = new String[length];
         for(int j = 0; j < array.length; j++){
             byte[] chars = new byte[rand.nextInt(10) + 5];
             for(int i = 0; i < chars.length; i++){
