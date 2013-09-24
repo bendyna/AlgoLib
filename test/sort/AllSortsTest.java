@@ -17,6 +17,7 @@ import static org.junit.Assert.assertTrue;
 //TODO: time tests
 //TODO: tests for arrays with the same element
 //TODO: tests for arrays with 2 different element
+//TODO: tests for exception when to < from
 
 @RunWith(value = Parameterized.class)
 public class AllSortsTest {

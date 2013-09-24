@@ -51,10 +51,10 @@ public class QuickSort extends BaseSort {
         }
         if(order != null){
             if(order[i] < order[j]) {
-                return -1;
+                return -2;
             }
             if(order[i] > order[j]) {
-                return 1;
+                return 2;
             }
         }
         return 0;
@@ -71,10 +71,10 @@ public class QuickSort extends BaseSort {
         }
         if(order != null){
             if(order[i] < order[j]) {
-                return -1;
+                return -2;
             }
             if(order[i] > order[j]) {
-                return 1;
+                return 2;
             }
         }
         return 0;
@@ -109,7 +109,7 @@ public class QuickSort extends BaseSort {
                 int c = compare(array, order, i, lt);
                 if(c == 0){
                     i++;
-                } else if((c < 0) ^ !ascending){
+                } else if((c == -2)|| (c == -1 && ascending) || (c == 1 && !ascending)){
                     swap(array, order, i, lt);
                     i++;
                     lt++;
@@ -167,7 +167,7 @@ public class QuickSort extends BaseSort {
                 int c = compare(array, order, i, lt);
                 if(c == 0){
                     i++;
-                } else if((c < 0) ^ !ascending){
+                } else if((c == -2)|| (c == -1 && ascending) || (c == 1 && !ascending)){
                     swap(array, order, i, lt);
                     i++;
                     lt++;
@@ -198,5 +198,10 @@ public class QuickSort extends BaseSort {
     @Override
     public boolean isNlgN() {
         return true;
+    }
+
+    @Override
+    public boolean isStable(){
+        return isStable;
     }
 }

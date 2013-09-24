@@ -81,4 +81,9 @@ public class MergeSort extends BaseSort {
     public boolean isNlgN() {
         return true;
     }
+
+    @Override
+    public boolean isStable(){
+        return true;
+    }
 }

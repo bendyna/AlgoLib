@@ -3,7 +3,6 @@ package sort;/*
  * Author: ivan.bendyna
  */
 
-import java.util.Arrays;
 
 public class BubbleSort extends BaseSort {
 
@@ -37,5 +36,10 @@ public class BubbleSort extends BaseSort {
     @Override
     public boolean isNlgN() {
         return false;
+    }
+
+    @Override
+    public boolean isStable(){
+        return true;
     }
 }

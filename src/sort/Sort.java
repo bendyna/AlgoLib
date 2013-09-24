@@ -16,4 +16,5 @@ public interface Sort {
     public void sort(Object[] array, boolean ascending, int from, int to);
 
     public boolean isNlgN();
+    public boolean isStable();
 }

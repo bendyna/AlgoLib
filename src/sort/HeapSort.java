@@ -148,4 +148,9 @@ public class HeapSort extends BaseSort{
     public boolean isNlgN() {
         return true;
     }
+
+    @Override
+    public boolean isStable(){
+        return false;
+    }
 }

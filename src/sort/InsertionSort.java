@@ -36,4 +36,9 @@ public class InsertionSort extends BaseSort {
     public boolean isNlgN() {
         return false;
     }
+
+    @Override
+    public boolean isStable(){
+        return true;
+    }
 }
