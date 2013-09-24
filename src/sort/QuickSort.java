@@ -113,4 +113,9 @@ public class QuickSort extends BaseSort {
             len = to - from + 1;
         }
     }
+
+    @Override
+    public boolean isNlgN() {
+        return true;
+    }
 }

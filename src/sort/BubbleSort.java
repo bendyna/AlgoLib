@@ -33,4 +33,9 @@ public class BubbleSort extends BaseSort {
             }
         }
     }
+
+    @Override
+    public boolean isNlgN() {
+        return false;
+    }
 }

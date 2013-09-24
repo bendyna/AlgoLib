@@ -31,4 +31,9 @@ public class InsertionSort extends BaseSort {
             array[j] = v;
         }
     }
+
+    @Override
+    public boolean isNlgN() {
+        return false;
+    }
 }

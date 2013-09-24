@@ -76,4 +76,9 @@ public class MergeSort extends BaseSort {
         }
         System.arraycopy(auxArray, from, array, from, len);
     }
+
+    @Override
+    public boolean isNlgN() {
+        return true;
+    }
 }

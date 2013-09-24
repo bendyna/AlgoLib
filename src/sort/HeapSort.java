@@ -143,4 +143,9 @@ public class HeapSort extends BaseSort{
             sink(array, isMinHeap, from, to, i);
         }
     }
+
+    @Override
+    public boolean isNlgN() {
+        return true;
+    }
 }
