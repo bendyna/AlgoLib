@@ -8,6 +8,9 @@ public class BubbleSort extends BaseSort {
 
     @Override
     public void sort(long[] array, boolean ascending, int from, int to) {
+        if(to < from){
+            throw new IllegalArgumentException();
+        }
         for(int i = from; i < to; i++){
             for(int j = from; j < to - (i - from); j++){
                 if((ascending && array[j] > array[j + 1]) || (!ascending && array[j] < array[j + 1])){
@@ -22,6 +25,9 @@ public class BubbleSort extends BaseSort {
     @Override
     @SuppressWarnings("unchecked")
     public void sort(Object[] array, boolean ascending, int from, int to) {
+        if(to < from){
+            throw new IllegalArgumentException();
+        }
         for(int i = from; i < to; i++){
             for(int j = from; j < to - (i - from); j++){
                 if((ascending && ((Comparable)array[j]).compareTo(array[j + 1]) > 0) || (!ascending && ((Comparable)array[j]).compareTo(array[j + 1]) < 0)){

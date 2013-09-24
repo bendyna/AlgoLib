@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ AllSortsTest.class, TestSortStability.class })
+@Suite.SuiteClasses({ TestSortRandomArrays.class, TestSortStability.class, TestSortTime.class, TestSortBoundary.class })
 public class AllTests {
 
 }

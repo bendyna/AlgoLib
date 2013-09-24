@@ -7,6 +7,9 @@ public class InsertionSort extends BaseSort {
 
     @Override
     public void sort(long[] array, boolean ascending, int from, int to) {
+        if(to < from){
+            throw new IllegalArgumentException();
+        }
         for(int i = from + 1; i <= to; i++){
             long v = array[i];
             int j = i;
@@ -21,6 +24,9 @@ public class InsertionSort extends BaseSort {
     @Override
     @SuppressWarnings("unchecked")
     public void sort(Object[] array, boolean ascending, int from, int to) {
+        if(to < from){
+            throw new IllegalArgumentException();
+        }
         for(int i = from + 1; i <= to; i++){
             Object v = array[i];
             int j = i;

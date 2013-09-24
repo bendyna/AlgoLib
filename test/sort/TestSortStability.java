@@ -7,29 +7,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
 @RunWith(value = Parameterized.class)
-public class TestSortStability {
+public class TestSortStability extends TestSort {
 
     private final static int COUNT_TESTS = 1000;
     private final static int LENGTH_TESTS = 100;
     private final static int MAX_INT_VALUE = 10;
 
-    private Sort sort;
-
     public TestSortStability(Sort sort){
-        this.sort = sort;
-    }
-
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-        Object[][] sorts = new Object[][]{{new MergeSort()}, {new QuickSort(false)}, {new QuickSort(true)}, {new HeapSort()}, {new BubbleSort()}, {new InsertionSort()}};
-        return Arrays.asList(sorts);
+        super(sort);
     }
 
     @Test
