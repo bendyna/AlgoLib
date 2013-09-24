@@ -33,7 +33,7 @@ public class AllSortsTest {
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
-        Object[][] sorts = new Object[][]{{new MergeSort()}, {new QuickSort()}, {new HeapSort()}, {new BubbleSort()}, {new InsertionSort()}};
+        Object[][] sorts = new Object[][]{{new MergeSort()}, {new QuickSort(false)}, {new QuickSort(true)}, {new HeapSort()}, {new BubbleSort()}, {new InsertionSort()}};
         return Arrays.asList(sorts);
     }
 
