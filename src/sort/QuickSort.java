@@ -33,31 +33,40 @@ public class QuickSort extends BaseSort {
             throw new IllegalArgumentException();
         }
         int len = to - from + 1;
-        if(len < 2){
-            return;
-        }
-        swap(array, from, from + rand.nextInt(len));
-        int lt = from;
-        int i = from + 1;
-        int gt = to;
-        while (i <= gt) {
-            if(array[i] == array[lt]){
-                i++;
-            } else if((array[i] < array[lt]) ^ !ascending){
-                swap(array, i, lt);
-                i++;
-                lt++;
+        while(len >= 2)
+        {
+            swap(array, from, from + rand.nextInt(len));
+            int lt = from;
+            int i = from + 1;
+            int gt = to;
+            while (i <= gt) {
+                if(array[i] == array[lt]){
+                    i++;
+                } else if((array[i] < array[lt]) ^ !ascending){
+                    swap(array, i, lt);
+                    i++;
+                    lt++;
+                }
+                else{
+                    swap(array, i, gt);
+                    gt--;
+                }
+            }
+            int lengthLeft = lt - from;
+            int lengthRight = to - gt;
+            if(lengthLeft > lengthRight){
+                if(gt < to){
+                    sort(array, ascending, gt + 1, to);
+                }
+                to = lt - 1;
             }
             else{
-                swap(array, i, gt);
-                gt--;
+                if(lt > from){
+                    sort(array, ascending, from, lt - 1);
+                }
+                from = gt + 1;
             }
-        }
-        if(lt > from){
-            sort(array, ascending, from, lt - 1);
-        }
-        if(gt < to){
-            sort(array, ascending, gt + 1, to);
+            len = to - from + 1;
         }
     }
 
@@ -68,32 +77,40 @@ public class QuickSort extends BaseSort {
             throw new IllegalArgumentException();
         }
         int len = to - from + 1;
-        if(len < 2){
-            return;
-        }
-        swap(array, from, from + rand.nextInt(len));
-        int lt = from;
-        int i = from + 1;
-        int gt = to;
-        while (i <= gt) {
-            if(array[i] == array[lt]){
-                i++;
-            } else if((((Comparable)array[i]).compareTo(array[lt]) < 0) ^ !ascending){
-                swap(array, i, lt);
-                i++;
-                lt++;
+        while(len >= 2)
+        {
+            swap(array, from, from + rand.nextInt(len));
+            int lt = from;
+            int i = from + 1;
+            int gt = to;
+            while (i <= gt) {
+                if(array[i] == array[lt]){
+                    i++;
+                } else if((((Comparable)array[i]).compareTo(array[lt]) < 0) ^ !ascending){
+                    swap(array, i, lt);
+                    i++;
+                    lt++;
+                }
+                else{
+                    swap(array, i, gt);
+                    gt--;
+                }
+            }
+            int lengthLeft = lt - from;
+            int lengthRight = to - gt;
+            if(lengthLeft > lengthRight){
+                if(gt < to){
+                    sort(array, ascending, gt + 1, to);
+                }
+                to = lt - 1;
             }
             else{
-                swap(array, i, gt);
-                gt--;
+                if(lt > from){
+                    sort(array, ascending, from, lt - 1);
+                }
+                from = gt + 1;
             }
-        }
-        if(lt > from){
-            sort(array, ascending, from, lt - 1);
-        }
-        if(gt < to){
-            sort(array, ascending, gt + 1, to);
+            len = to - from + 1;
         }
     }
-
 }
