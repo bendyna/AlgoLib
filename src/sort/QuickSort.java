@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class QuickSort extends BaseSort {
 
-    private Random rand = new Random();
-    private boolean isStable;
+    private final Random rand = new Random();
+    private final boolean isStable;
 
     public QuickSort(boolean isStable){
         this.isStable = isStable;

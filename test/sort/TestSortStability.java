@@ -50,8 +50,8 @@ public class TestSortStability extends TestSort {
     }
 
     private class IndexedInteger implements Comparable<IndexedInteger>{
-        private int value;
-        private int index;
+        private final int value;
+        private final int index;
 
         IndexedInteger(int value, int index){
             this.value = value;

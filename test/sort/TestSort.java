@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class TestSort {
 
-    protected Sort sort;
+    protected final Sort sort;
 
     public TestSort(Sort sort){
         this.sort = sort;
