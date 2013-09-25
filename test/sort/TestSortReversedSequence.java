@@ -12,7 +12,7 @@ import static org.junit.Assert.assertArrayEquals;
 @RunWith(value = Parameterized.class)
 public class TestSortReversedSequence extends TestSort{
 
-    private final int SEQUENCE_LENGTH = 100;
+    private final static int SEQUENCE_LENGTH = 100;
 
     public TestSortReversedSequence(Sort sort) {
         super(sort);
@@ -20,12 +20,8 @@ public class TestSortReversedSequence extends TestSort{
 
     @Test
     public void test() throws Exception {
-        long[] array = new long[SEQUENCE_LENGTH];
-        long[] expected = new long[SEQUENCE_LENGTH];
-        for(int i = 0; i < SEQUENCE_LENGTH; i++){
-            array[i] = SEQUENCE_LENGTH - i - 1;
-            expected[i] = i;
-        }
+        long[] array = createReversedSequence(SEQUENCE_LENGTH);
+        long[] expected = createSortedSequence(SEQUENCE_LENGTH);
         sort.sort(array);
 
         assertArrayEquals(expected, array);

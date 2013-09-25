@@ -43,14 +43,6 @@ public class TestSort {
         return array;
     }
 
-    protected long[] createSortedArray(int length){
-        long[] array = new long[length];
-        for(int i = 0; i < length; i++){
-            array[i] = i;
-        }
-        return array;
-    }
-
     protected boolean checkArray(long[] array, boolean ascending ,int from, int to){
         for(int i = from; i < to; i++){
             if(array[i] == array[i + 1]) {
@@ -73,5 +65,46 @@ public class TestSort {
             }
         }
         return true;
+    }
+
+    protected long[] createReversedSequence(int length){
+        long[] array = new long[length];
+        for(int i = 0; i < length; i++){
+            array[i] = length - i - 1;
+        }
+        return array;
+    }
+
+    protected long[] createSortedSequence(int length){
+        long[] array = new long[length];
+        for(int i = 0; i < length; i++){
+            array[i] = i;
+        }
+        return array;
+    }
+
+    protected long[] createArrayOneElement(int length){
+        return createArrayOneElement(length, 1);
+    }
+
+    protected long[] createArrayOneElement(int length, long element){
+        long[] array = new long[length];
+        for(int i = 0; i < length; i++){
+            array[i] = element;
+        }
+        return array;
+    }
+
+    protected long[] generateArrayFewEquals(int length){
+        return generateArrayFewEquals(length, 3);
+    }
+
+    protected long[] generateArrayFewEquals(int length, int count){
+        Random rand = new Random();
+        long[] array = new long[length];
+        for(int i = 0; i < length; i++){
+            array[i] = rand.nextInt(count);
+        }
+        return array;
     }
 }

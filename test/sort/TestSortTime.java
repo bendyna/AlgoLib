@@ -33,15 +33,28 @@ public class TestSortTime extends TestSort{
     @Test
     public void testTimeSortedArray() throws Exception {
         if(sort.isNlgN()){
-            sort.sort(createSortedArray(LENGTH_TIME_TESTS));
+            sort.sort(createSortedSequence(LENGTH_TIME_TESTS));
         }
     }
 
     @Test
     public void testTimeReverseSortedArray() throws Exception {
         if(sort.isNlgN()){
-            sort.sort(createSortedArray(LENGTH_TIME_TESTS), false);
+            sort.sort(createSortedSequence(LENGTH_TIME_TESTS), false);
         }
     }
 
+    @Test
+    public void testTimeArrayOneElement() throws Exception {
+        if(sort.isNlgN()){
+            sort.sort(createArrayOneElement(LENGTH_TIME_TESTS));
+        }
+    }
+
+    @Test
+    public void testTimeArrayFewEquals() throws Exception {
+        if(sort.isNlgN()){
+            sort.sort(generateArrayFewEquals(LENGTH_TIME_TESTS));
+        }
+    }
 }

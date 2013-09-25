@@ -7,14 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
-
-//TODO: tests for arrays with the same element
-//TODO: tests for arrays with 2 different element
 
 @RunWith(value = Parameterized.class)
 public class TestSortRandomArrays extends TestSort{
