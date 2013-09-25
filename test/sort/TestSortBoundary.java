@@ -18,9 +18,4 @@ public class TestSortBoundary extends TestSort {
     public void testEmptyArray() throws Exception {
         sort.sort(new long[]{});
     }
-
-    @Test(expected=IllegalArgumentException.class)
-    public void testIncorrectBoundsArray() throws Exception {
-        sort.sort(new long[2], 1, 0);
-    }
 }
