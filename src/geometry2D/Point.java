@@ -105,7 +105,11 @@ public class Point extends GeometricObject implements Comparable<Point> {
 
     @Override
     public int hashCode() {
-        return (int) ((x * 31 + y) * 10000);
+        long bits = Double.doubleToLongBits(x);
+        int xh =  (int)(bits ^ (bits >>> 32));
+        bits = Double.doubleToLongBits(y);
+        int yh =  (int)(bits ^ (bits >>> 32));
+        return xh * 31 + yh;
     }
 
     @Override
