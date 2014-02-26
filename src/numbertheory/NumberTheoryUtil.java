@@ -84,4 +84,15 @@ public class NumberTheoryUtil {
         res.y = tx - c * res.y;
         return res;
     }
+
+    // -1 - no solution
+    public static int reverseModule(int a, int m) {
+        GcdexResult gcdexResult = gcdex(a, m);
+        if(gcdexResult.gcd != 1) {
+            return -1;
+        }
+        long x = gcdexResult.x;
+        x = ((x % m) + m) % m;
+        return (int) x;
+    }
 }

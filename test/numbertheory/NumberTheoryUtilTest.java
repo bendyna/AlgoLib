@@ -79,4 +79,27 @@ public class NumberTheoryUtilTest {
             }
         }
     }
+
+    @Test
+    public void testReverseModule() {
+        assertEquals(1, NumberTheoryUtil.reverseModule(1, 2));
+        assertEquals(2, NumberTheoryUtil.reverseModule(2, 3));
+        assertEquals(-1, NumberTheoryUtil.reverseModule(2, 4));
+    }
+
+    @Test
+    public void testRandomReverseModule() {
+        Random rand = new Random();
+        for(int i = 0; i < 10000; i++) {
+            int m = rand.nextInt(10000) + 2;
+            int a = rand.nextInt(m);
+            int ra = NumberTheoryUtil.reverseModule(a, m);
+            if(ra >= 0) {
+                long la = a;
+                la *= ra;
+                la %= m;
+                assertEquals(1, la);
+            }
+        }
+    }
 }
