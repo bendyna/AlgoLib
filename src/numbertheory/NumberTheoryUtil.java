@@ -95,4 +95,27 @@ public class NumberTheoryUtil {
         x = ((x % m) + m) % m;
         return (int) x;
     }
+
+    //only if mod prime
+    public static int getBinomialCoefficient(int k, int n, int mod) {
+        if(n <= 0 || k < 0 || k > n) {
+            throw new IllegalArgumentException();
+        }
+        long num = 1;
+        long div = 1;
+        for(int i = 1; i <= k; i++) {
+            num *= n + 1 - i;
+            num %= mod;
+            div *= i;
+            div %= mod;
+        }
+        div = NumberTheoryUtil.reverseModule((int) div, mod);
+        num *= div;
+        num %= mod;
+        return (int) num;
+    }
+
+    public static int combinationsWithRepetition(int k, int n, int mod) {
+        return getBinomialCoefficient(k, n + k - 1, mod);
+    }
 }

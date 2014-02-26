@@ -102,4 +102,21 @@ public class NumberTheoryUtilTest {
             }
         }
     }
+
+    @Test
+    public void testBinomialCoefficient() {
+        assertEquals(5, NumberTheoryUtil.getBinomialCoefficient(1, 5, 1000000007));
+        assertEquals(1, NumberTheoryUtil.getBinomialCoefficient(0, 5, 1000000007));
+        assertEquals(1, NumberTheoryUtil.getBinomialCoefficient(5, 5, 1000000007));
+        assertEquals(1, NumberTheoryUtil.getBinomialCoefficient(1, 1, 1000000007));
+        assertEquals(252, NumberTheoryUtil.getBinomialCoefficient(5, 10, 1000000007));
+    }
+
+    @Test
+    public void testCombinationsWithRepetition() {
+        assertEquals(5, NumberTheoryUtil.combinationsWithRepetition(1, 5, 1000000007));
+        assertEquals(28, NumberTheoryUtil.combinationsWithRepetition(6, 3, 1000000007));
+        assertEquals(5, NumberTheoryUtil.combinationsWithRepetition(4, 2, 1000000007));
+        assertEquals(35, NumberTheoryUtil.combinationsWithRepetition(3, 5, 1000000007));
+    }
 }
