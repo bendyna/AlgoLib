@@ -35,4 +35,53 @@ public class NumberTheoryUtil {
         }
         return res;
     }
+
+    public static int gcd(int a, int b) {
+        if((a == 0 && b == 0) || a < 0 || b < 0) {
+            throw new IllegalArgumentException();
+        }
+        if(a < b) {
+            return gcd(b, a);
+        }
+        if(b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+
+    public static class GcdexResult {
+        //ax + by = gcd
+
+        public int gcd;
+        public long x;
+        public long y;
+
+        public GcdexResult(int gcd, int x, int y) {
+            this.gcd = gcd;
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    @SuppressWarnings("SuspiciousNameCombination")
+    public static GcdexResult gcdex(int a, int b) {
+        if(a < b) {
+            GcdexResult res = gcdex(b, a);
+            long tx = res.x;
+            res.x = res.y;
+            res.y = tx;
+            return res;
+        }
+        if(b == 0) {
+            return new GcdexResult(a, 1, 0);
+        }
+        int r = a % b;
+        int c = a / b;
+
+        GcdexResult res = gcdex(b, r);
+        long tx = res.x;
+        res.x = res.y;
+        res.y = tx - c * res.y;
+        return res;
+    }
 }

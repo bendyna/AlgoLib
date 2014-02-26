@@ -10,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import java.util.Random;
+
 public class NumberTheoryUtilTest {
 
     @Test
@@ -35,5 +37,46 @@ public class NumberTheoryUtilTest {
             }
         }
         return res;
+    }
+
+    @Test
+    public void testGcd() {
+        assertEquals(10, NumberTheoryUtil.gcd(100, 30));
+        assertEquals(1, NumberTheoryUtil.gcd(57, 5));
+        assertEquals(1, NumberTheoryUtil.gcd(97, 300));
+        assertEquals(6, NumberTheoryUtil.gcd(102, 36));
+        assertEquals(1, NumberTheoryUtil.gcd(1, 6));
+        assertEquals(1, NumberTheoryUtil.gcd(9, 1));
+        assertEquals(1, NumberTheoryUtil.gcd(0, 1));
+        assertEquals(1, NumberTheoryUtil.gcd(1, 0));
+    }
+
+    @Test
+    public void testRandomGcd() {
+        Random rand = new Random();
+        for(int i = 0; i < 1000; i++) {
+            int a = rand.nextInt(10000);
+            int b = rand.nextInt(10000);
+            if(a + b > 0) {
+                int g = NumberTheoryUtil.gcd(a, b);
+                assertEquals(0, a % g);
+                assertEquals(0, b % g);
+            }
+        }
+    }
+
+    @Test
+    public void testRandomGcdex() {
+        Random rand = new Random();
+        for(int i = 0; i < 10000; i++) {
+            int a = rand.nextInt(10000);
+            int b = rand.nextInt(10000);
+            if(a + b > 0) {
+                NumberTheoryUtil.GcdexResult gcdexResult = NumberTheoryUtil.gcdex(a, b);
+                assertEquals(0, a % gcdexResult.gcd);
+                assertEquals(0, b % gcdexResult.gcd);
+                assertEquals(gcdexResult.gcd, gcdexResult.x * a +gcdexResult.y * b);
+            }
+        }
     }
 }
