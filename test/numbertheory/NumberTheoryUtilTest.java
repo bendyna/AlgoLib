@@ -6,6 +6,7 @@
 
 package numbertheory;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -118,5 +119,16 @@ public class NumberTheoryUtilTest {
         assertEquals(28, NumberTheoryUtil.combinationsWithRepetition(6, 3, 1000000007));
         assertEquals(5, NumberTheoryUtil.combinationsWithRepetition(4, 2, 1000000007));
         assertEquals(35, NumberTheoryUtil.combinationsWithRepetition(3, 5, 1000000007));
+    }
+
+    @Test
+    public void testPrimeNumbers() {
+        assertArrayEquals(new int[]{2, 3, 5, 7, 11, 13}, NumberTheoryUtil.getPrimeNumbers(13));
+        assertArrayEquals(new int[]{2, 3, 5, 7, 11, 13}, NumberTheoryUtil.getPrimeNumbers(14));
+        assertArrayEquals(new int[]{2, 3, 5, 7, 11, 13}, NumberTheoryUtil.getPrimeNumbers(16));
+        assertArrayEquals(new int[]{2, 3, 5, 7, 11, 13, 17}, NumberTheoryUtil.getPrimeNumbers(17));
+        assertArrayEquals(new int[]{2, 3}, NumberTheoryUtil.getPrimeNumbers(3));
+        assertArrayEquals(new int[]{2, 3}, NumberTheoryUtil.getPrimeNumbers(4));
+        assertArrayEquals(new int[]{2, 3, 5}, NumberTheoryUtil.getPrimeNumbers(5));
     }
 }

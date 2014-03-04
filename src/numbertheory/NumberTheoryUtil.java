@@ -118,4 +118,32 @@ public class NumberTheoryUtil {
     public static int combinationsWithRepetition(int k, int n, int mod) {
         return getBinomialCoefficient(k, n + k - 1, mod);
     }
+
+    public static int[] getPrimeNumbers(int max) {
+        byte[] num = new byte[max + 1];
+        for(int i = 2; i <= max; i++) {
+            if(num[i] == 0) {
+                int t = 2 * i;
+                while(t <= max) {
+                    num[t] = 1;
+                    t += i;
+                }
+            }
+        }
+        int count = 0;
+        for(int i = 2; i <= max; i++) {
+            if(num[i] == 0) {
+                count++;
+            }
+        }
+        int[] primes = new int[count];
+        count = 0;
+        for(int i = 2; i <= max; i++) {
+            if(num[i] == 0) {
+                primes[count] = i;
+                count++;
+            }
+        }
+        return primes;
+    }
 }
